@@ -41,6 +41,12 @@ INSTALLED_APPS = [
     'blog',
 ]
 
+# INSTALLED_APPS = [
+#    'django.contrib.staticfiles',
+#    'rest_framework',
+#    'blog',
+# ]
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
