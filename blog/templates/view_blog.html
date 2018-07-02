@@ -1,0 +1,97 @@
+{% extends "base_template.html" %}
+{%block mainbody%}
+
+<a href="/homepage">Back to home</a>
+
+<div ng-controller = "view_blog">
+
+<div class="row">
+
+	<div class="columns">
+		<div><h2 style= "margin-left :40%">{!title!}</h2></div>
+		<br/>
+		<div>
+			<span ng-repeat="x in paragraph" ng-mouseover="show_comment(x.id);"> {!x.content!}<br/><br/></span>
+
+		</div>
+	</div>
+
+	<div class="columns" style="flex:30%"> 
+	<h3 style= "margin-left :40%">Comments</h3>
+		<div>
+			<div class="commentbox" ng-repeat='x in comment_list'>{!x.comment!}</div>
+			<div class="circle" ng-click="showaddComment=!showaddComment;comment='';" >
+				<div class="bar horizontal"></div>
+				<div class="bar vertical"></div>
+			</div>
+
+		<div class="columns" ng-show="showaddComment"> 
+		<input type="text" ng-model = "comment">
+
+		<button ng-click="addComment(comment);">Submit
+
+		</button>
+		<span ng-show="show_error"> Comment not saved try again</span>
+		</div>
+
+
+	</div>
+
+
+
+</div>
+<style type="text/css">
+	
+.columns {
+    flex: 70%;
+    padding: 5px;
+}
+
+
+.row {
+    display: flex;
+}
+
+.commentbox {
+	border: 2px;
+    border-color: black;
+    border-style: solid;
+    border-radius: 5px;
+    margin:5px;
+}
+
+.circle {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  background-color: black;
+  position: relative;
+  margin-left:50%;
+}
+
+.bar {
+  margin: 0 auto;
+  position: absolute;
+  background-color: #fff;
+}
+
+.horizontal {
+  width: 70%;
+  height: 20%;
+  left: 15%;
+  top: 40%;
+
+}
+
+.vertical {
+  width: 20%;
+  height: 70%;
+  left: 40%;
+  top: 15%;
+}
+
+</style>
+ {% endblock %}
+
+
+

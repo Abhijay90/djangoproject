@@ -1,0 +1,32 @@
+{% extends "base_template.html" %}
+
+{% block mainbody %}
+
+<a href="/homepage">Back to home</a>
+<div ng-controller = "add_blog">
+
+			<div>
+				<h3><span>Add Blog</b></span></h3>
+
+				<span><b>BlogName</b></span>
+				<br/>
+
+				<input type="text" ng-model="blog_name">
+				<br/><br/>
+
+				<span><b>BlogData</b></span>
+				<br/>
+
+
+				<textarea rows="4" cols="50" ng-model="blog_data">
+
+				</textarea>
+
+
+			</div>
+
+			<button ng-click="postdata()">SUBMIT</button>
+
+		</div>
+
+ {% endblock %}
