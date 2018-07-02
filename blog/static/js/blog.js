@@ -30,7 +30,7 @@ app.controller("list_blog",function($scope,asynNetworkService) {
 app.controller("add_blog",function($scope,asynNetworkService) {
 	window.debug=$scope;
 
-	console.log("add-blog");
+	// console.log("add-blog");
 	var urls ={ 'key': 'blog_list', 'url': '/add_blog_api' };
 
 	$scope.text_input="";
@@ -40,11 +40,18 @@ app.controller("add_blog",function($scope,asynNetworkService) {
 	$scope.postdata=function(){
 		// console.log($scope.blog_name);
 		// console.log($scope.blog_data);
+		$scope.show_error=false;
 
 		if ($scope.blog_name && $scope.blog_data){
 			data = {"title":$scope.blog_name , "content":$scope.blog_data}
 			asynNetworkService.post(urls.url,data).then(function(result) {
 				console.log(result);
+				if (result.status){
+					window.location="/view-blog/"+result.id;
+				}
+				else{
+					$scope.show_error=true;
+				}
 			});
 		}
 	}
@@ -91,7 +98,7 @@ app.controller("view_blog",function($scope,asynNetworkService) {
 		$scope.show_error=false;
 		$scope.showaddComment=false;
 		var comment_urls = [
-	    { 'key': 'comment', 'url': '/view_comment_api/'+id },
+	    { 'key': 'comment', 'url': '/comment_api/'+id },
 		];
 
 		asynNetworkService.get(comment_urls).then(function(result) {
@@ -116,7 +123,7 @@ app.controller("view_blog",function($scope,asynNetworkService) {
 	}
 
 	$scope.postComment=function(paragraph_id,comment){
-		var comment_urls = { 'key': 'comment', 'url': '/view_comment_api/'+paragraph_id+"/" };
+		var comment_urls = { 'key': 'comment', 'url': '/comment_api/'+paragraph_id+"/" };
 		data={"content":comment,"paragraph_id":paragraph_id};
 		console.log(comment_urls);
 		console.log(data);
@@ -125,7 +132,7 @@ app.controller("view_blog",function($scope,asynNetworkService) {
 					$scope.show_comment($scope.active_para);
 				}
 				else{
-					console.log("why");
+					// console.log("why");
 					$scope.show_error=true;
 				}
 			});

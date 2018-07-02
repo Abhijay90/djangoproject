@@ -15,7 +15,7 @@ urlpatterns = [
     url(r'^view-blog/(?P<blog_id>\d+)/$', views.view_blog),
     url(r'^add_blog_api', views.AddBlog.as_view()),
     url(r'^view_blog_api/(?P<blog_id>\d+)/$', views.ViewBlog.as_view()),
-    url(r'^view_comment_api/(?P<paragraph_id>\d+)/$', views.comment.as_view())
+    url(r'^comment_api/(?P<paragraph_id>\d+)/$', views.comment.as_view())
     ]
 
 

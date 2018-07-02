@@ -40,8 +40,7 @@ class AddBlog(APIView):
             s =BlogArticleBase()
             resp = s.addBlog(title,content)
             # print "all done"
-            # print resp
-            return JsonResponse(dict(status = True,title = title,content=content))
+            return JsonResponse(dict(status = resp["status"],title = title,content=content,id=resp["id"]))
         return JsonResponse(dict(status = False,title = title,content=content))
 
 
