@@ -1,9 +1,17 @@
+Setup:
+
+Recommended install in virtual environment
 
 to install run 
 
-setup.sh
+sh setup.sh
 
-Recommended install in virtual environment
+
+python manage.py runserver
+
+
+
+Description:
 
 
 Initial Url:
